@@ -72,7 +72,7 @@ export const signMessage = async () => {
   await window.ethereum.request({
     "method": "eth_signTypedData_v4",
     "params": [
-      "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      accounts[0],
       {
         "types": {
           "EIP712Domain": [
