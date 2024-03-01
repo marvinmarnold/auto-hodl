@@ -1,0 +1,32 @@
+{
+  "version": "0.1.0",
+  "description": "American Airlines Snap",
+  "proposedName": "American Airlines Snap",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mario-christopher/snaps-dynamic-ui/tree/main/packages/snap"
+  },
+  "source": {
+    "shasum": "UI95EZJMZlwxl2GyKn2+IaOBQcigr2JzXZ8bdso2sPg=",
+    "location": {
+      "npm": {
+        "filePath": "dist/bundle.js",
+        "iconPath": "images/icon.svg",
+        "packageName": "snap",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "initialPermissions": {
+    "endowment:rpc": {
+      "dapps": true,
+      "snaps": false
+    },
+    "snap_dialog": {},
+    "snap_manageState": {},
+    "endowment:signature-insight": {},
+    "endowment:page-home": {},
+    "endowment:lifecycle-hooks": {}
+  },
+  "manifestVersion": "0.1"
+}
