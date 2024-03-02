@@ -22,7 +22,7 @@ import {
 	linea,
 	mainnet,
 	sepolia,
-	xdc,
+	xdcTestnet,
 } from "@wagmi/core/chains";
 import { CoinbaseWalletConnector } from "@wagmi/core/connectors/coinbaseWallet";
 import { InjectedConnector } from "@wagmi/core/connectors/injected";
@@ -103,7 +103,7 @@ const { chains, publicClient } = configureChains(
 		mainnet,
 		sepolia,
 		linea,
-		xdc,
+		xdcTestnet,
 		incoTest,
 		inEvmTest,
 		fhenixFrontier,
