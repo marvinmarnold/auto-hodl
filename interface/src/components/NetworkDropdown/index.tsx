@@ -3,7 +3,6 @@ import React from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { IoWarningOutline } from "react-icons/io5";
 
-import { DISABLED_CHAINS } from "../../data/constants";
 import { INetworkDropdown } from "../../interfaces";
 import Tooltip from "../Tooltip";
 
@@ -66,22 +65,12 @@ function NetworkDropdown({
 									key={chain.chainId}
 									value={chain}
 									className="p-1"
-									disabled={DISABLED_CHAINS.includes(
-										chain.chainId
-									)}
 								>
 									{({ selected, active }) => (
 										<div
 											className={`${
 												active &&
 												"bg-dark-400 text-primary-100"
-											}
-											${
-												DISABLED_CHAINS.includes(
-													chain.chainId
-												)
-													? "hover:cursor-not-allowed hover:bg-dark-400 hover:text-primary-100"
-													: "cursor-pointer"
 											}
                                          ${
 												selected &&

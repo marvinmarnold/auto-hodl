@@ -48,7 +48,18 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_savingsAmt",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_timelock",
+				"type": "uint256"
+			}
+		],
 		"name": "createAccount",
 		"outputs": [
 			{

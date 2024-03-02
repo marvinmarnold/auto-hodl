@@ -7,6 +7,8 @@ export {
 	keccak256,
 	parseAbiParameters,
 	parseUnits,
+	zeroAddress,
+	encodeFunctionData,
 } from "./blockchainInterface";
 export { getChain } from "./getChain";
 export {

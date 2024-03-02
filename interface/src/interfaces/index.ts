@@ -7,6 +7,7 @@ export type { IWalletMenuButton } from "./components/walletMenu";
 export type { SupportedChain } from "./data/chains";
 export type { IGetChain } from "./resources/getChain";
 export { IWalletService } from "./services/wallet";
+export { ISavingsService } from "./services/savings";
 export type {
 	Balance,
 	EIP1193Provider,

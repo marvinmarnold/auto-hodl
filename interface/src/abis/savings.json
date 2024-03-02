@@ -5,10 +5,25 @@
 				"internalType": "address",
 				"name": "_owner",
 				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_savingsAmt",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_timelock",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "nonpayable",
 		"type": "constructor"
+	},
+	{
+		"inputs": [],
+		"name": "FundsLocked",
+		"type": "error"
 	},
 	{
 		"inputs": [],
@@ -29,6 +44,19 @@
 			}
 		],
 		"name": "changeOwner",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_savingsAmt",
+				"type": "uint256"
+			}
+		],
+		"name": "changeSavingsAmt",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -70,6 +98,45 @@
 				"internalType": "address",
 				"name": "",
 				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "savingsAmt",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "timeLockInit",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "timelock",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",

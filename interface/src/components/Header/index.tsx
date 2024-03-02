@@ -33,7 +33,7 @@ function Header() {
 				);
 			}
 		} else if (selectedChain === null) {
-			setSelectedChain(getChain({ name: "Ethereum" })!);
+			setSelectedChain(getChain({ name: "Sepolia" })!);
 		}
 	}, [currentNetwork, isWalletConnected, selectedChain]);
 
@@ -57,7 +57,7 @@ function Header() {
 	}, [selectedChain]);
 
 	return (
-		<header className="sticky top-0 z-10 flex w-full items-center justify-center border-b border-b-dark-200 px-4 py-2 backdrop-blur-sm">
+		<header className="sticky top-0 z-10 flex w-full items-center justify-center px-4 py-2 backdrop-blur-sm">
 			<div className="flex w-full max-w-4xl items-center justify-between">
 				{/* <Link
 					className="relative flex w-14 justify-center outline-none"

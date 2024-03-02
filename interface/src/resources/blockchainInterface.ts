@@ -7,4 +7,6 @@ export {
 	keccak256,
 	parseAbiParameters,
 	parseUnits,
+	zeroAddress,
+	encodeFunctionData,
 } from "viem";
