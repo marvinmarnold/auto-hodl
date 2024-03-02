@@ -20,6 +20,7 @@ import {
 	arbitrum,
 	// avalanche,
 	base,
+	linea,
 	// bsc,
 	// celo,
 	// fantom,
@@ -30,6 +31,7 @@ import {
 	// polygon,
 	// polygonMumbai,
 	sepolia,
+	xdc,
 } from "@wagmi/core/chains";
 import { CoinbaseWalletConnector } from "@wagmi/core/connectors/coinbaseWallet";
 import { InjectedConnector } from "@wagmi/core/connectors/injected";
@@ -55,6 +57,8 @@ const { chains, publicClient } = configureChains(
 		// optimism,
 		// polygon,
 		sepolia,
+		linea,
+		xdc,
 	],
 	[
 		jsonRpcProvider({

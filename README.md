@@ -59,11 +59,23 @@ $ yarn dev
 
 |Network|Environment|Address|
 |-------|-----------|-------|
-|Base|Mainnet|0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20|
+|Base|Mainnet|[0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20](https://basescan.org/address/0xf312f04df2885ec7c44cde77bac8bb8b1fb4aa20)|
+|Inco|Testnet|[0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4](https://explorer.testnet.inco.org/address/0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4)|
+|Fhenix|Testnet|[0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4](https://explorer.testnet.fhenix.zone/address/0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4)|
+|Arbitrum|Testnet|[0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4](https://sepolia.arbiscan.io/address/0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4)|
+|Linea|Testnet||
+|XDC|Testnet||
+|Injective|Testnet||
 
 
 ## Deployed Target Contracts
 
 |Network|Environment|Address|
 |-------|-----------|-------|
-|Base|Mainnet|0x94789011AcF3c7411d1db9Abe8337f4BA7589D9f|
+|Base|Mainnet|[0x94789011AcF3c7411d1db9Abe8337f4BA7589D9f](https://basescan.org/address/0x94789011AcF3c7411d1db9Abe8337f4BA7589D9f)|
+|Inco|Testnet|[0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20](https://explorer.testnet.inco.org/address/0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20)|
+|Fhenix|Testnet|[0x94789011AcF3c7411d1db9Abe8337f4BA7589D9f](https://explorer.testnet.fhenix.zone/address/0x94789011AcF3c7411d1db9Abe8337f4BA7589D9f)|
+|Arbitrum|Testnet|[0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20](https://sepolia.arbiscan.io/address/0xf312f04df2885ec7c44cde77bac8bb8b1fb4aa20)|
+|Linea|Testnet||
+|XDC|Testnet||
+|Injective|Testnet||

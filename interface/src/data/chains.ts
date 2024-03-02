@@ -169,4 +169,73 @@ export const chainList: SupportedChain[] = [
 	// 	chainId: 250,
 	// 	isTestnet: false,
 	// },
+	// ********** Linea ********** //
+	{
+		name: "Linea",
+		// TODO UPDATE
+		imageSource: "/images/iconFantom.svg",
+		blockExplorer: "https://lineascan.build/",
+		nativeCurrency: {
+			symbol: "LIN",
+			decimals: 18,
+		},
+		chainId: 59144,
+		isTestnet: false,
+	},
+
+	// ********** XDC ********** //
+	{
+		name: "XDC",
+		// TODO UPDATE
+		imageSource: "/images/iconFantom.svg",
+		blockExplorer: "https://xdc.blocksscan.io/",
+		nativeCurrency: {
+			symbol: "XDC",
+			decimals: 18,
+		},
+		chainId: 50,
+		isTestnet: false,
+	},
+
+	// // ********** Injective ********** //
+	// {
+	// 	name: "Injective",
+	// 	// TODO UPDATE
+	// 	imageSource: "/images/iconFantom.svg",
+	// 	blockExplorer: "https://explorer.injective.network/",
+	// 	nativeCurrency: {
+	// 		symbol: "INJ",
+	// 		decimals: 18,
+	// 	},
+	// 	chainId: 123,
+	// 	isTestnet: false,
+	// },
+
+	// // ********** Inco ********** //
+	// {
+	// 	name: "Inco",
+	// 	// TODO UPDATE
+	// 	imageSource: "/images/iconFantom.svg",
+	// 	blockExplorer: "https://explorer.testnet.inco.org/",
+	// 	nativeCurrency: {
+	// 		symbol: "INCO",
+	// 		decimals: 18,
+	// 	},
+	// 	chainId: 9090,
+	// 	isTestnet: true,
+	// },
+
+	// 	// ********** Fhenix ********** //
+	// 	{
+	// 		name: "Fhenix Frontier",
+	// 		// TODO UPDATE
+	// 		imageSource: "/images/iconFantom.svg",
+	// 		blockExplorer: "https://explorer.testnet.fhenix.zone",
+	// 		nativeCurrency: {
+	// 			symbol: "tFHE",
+	// 			decimals: 18,
+	// 		},
+	// 		chainId: 42069,
+	// 		isTestnet: true,
+	// 	},
 ];

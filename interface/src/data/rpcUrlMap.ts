@@ -14,4 +14,9 @@ export const rpcUrlMap: Record<number, string> = {
 	// 11155420: process.env.PRIVATE_OPTIMISM_SEPOLIA_RPC!,
 	// 84532: process.env.PRIVATE_BASE_SEPOLIA_RPC!,
 	// 80001: process.env.PRIVATE_POLYGON_MUMBAI_RPC!,
+	59144: process.env.PRIVATE_LINEA_RPC!,
+	50: process.env.PRIVATE_XDC_RPC!,
+	// 1234: process.env.PRIVATE_INJECTIVE_RPC!,
+	// 9090: process.env.PRIVATE_INCO_RPC!,
+	// 42069: process.env.PRIVATE_FHENIX_RPC!,
 };
