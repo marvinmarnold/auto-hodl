@@ -1,0 +1,42 @@
+# Compiler files
+cache/
+out/
+
+# Ignores development broadcast logs
+!/broadcast
+/broadcast/*/31337/
+/broadcast/**/dry-run/
+
+# Docs
+docs/
+
+# Dotenv file
+.env
+
+# misc
+.DS_Store
+*.pem
+cache/
+broadcast/
+
+# production
+out/
+
+# dependencies
+node_modules/
+
+# testing
+lcov.info
+.gas-snapshot
+
+# local env files
+.env
+
+# editor
+.vscode/
+.idea
+
+todo.txt
+units.txt
+faq.txt
+notes.txt
