@@ -63,7 +63,7 @@ $ yarn dev
 |Inco|Testnet|[0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4](https://explorer.testnet.inco.org/address/0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4)|
 |Fhenix|Testnet|[0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4](https://explorer.testnet.fhenix.zone/address/0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4)|
 |Arbitrum|Testnet|[0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4](https://sepolia.arbiscan.io/address/0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4)|
-|Linea|Testnet||
+|Linea|Mainnet|[0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4](https://lineascan.build/address/0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4)|
 |XDC|Testnet||
 |Injective|Testnet||
 
@@ -76,6 +76,6 @@ $ yarn dev
 |Inco|Testnet|[0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20](https://explorer.testnet.inco.org/address/0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20)|
 |Fhenix|Testnet|[0x94789011AcF3c7411d1db9Abe8337f4BA7589D9f](https://explorer.testnet.fhenix.zone/address/0x94789011AcF3c7411d1db9Abe8337f4BA7589D9f)|
 |Arbitrum|Testnet|[0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20](https://sepolia.arbiscan.io/address/0xf312f04df2885ec7c44cde77bac8bb8b1fb4aa20)|
-|Linea|Testnet||
+|Linea|Mainnet|[0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20](https://lineascan.build/address/0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20)|
 |XDC|Testnet||
 |Injective|Testnet||
