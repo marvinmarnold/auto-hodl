@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.21;
+pragma solidity ^0.8.19;
 
 contract MiddleMan {
     // storage varables
     uint256 public totalSaved;
     address public owner;
+    uint256 public timeLockInit;
 
     // errors
     error InsuffientValue();
@@ -12,6 +13,9 @@ contract MiddleMan {
 
     constructor(address _owner) {
         owner = _owner;
+
+         // Initialize lockTime, for example, at contract deployment
+        timeLockInit = block.timestamp;
     }
 
     function entryPoint(address _target, bytes memory _calldata)
@@ -37,6 +41,7 @@ contract MiddleMan {
     }
 
     function withdraw(uint256 amt) public onlyOwner {
+        require(block.timestamp >= timeLockInit + 365 days, "Funds are locked");
         payable(owner).transfer(amt);
     }
 
