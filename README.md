@@ -23,7 +23,7 @@ Auto HODL is a consumer DeFi framework for automatically saving a small amount o
 
 ### Diagram
 
-![Auto HODL design](auto-hodl-design-jpg)
+![Auto HODL design](auto-hodl-design.jpg)
 
 ## Getting started
 
