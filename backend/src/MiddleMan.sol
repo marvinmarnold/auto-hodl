@@ -14,7 +14,7 @@ contract MiddleMan {
         owner = _owner;
     }
 
-    function entryPoint(address _taget, bytes memory _calldata)
+    function entryPoint(address _target, bytes memory _calldata)
         public
         payable
         onlyOwner
@@ -29,7 +29,7 @@ contract MiddleMan {
         totalSaved += msg.value;
 
         // forward call to destination contract
-        (success, returnData) = _taget.call(_calldata);
+        (success, returnData) = _target.call(_calldata);
     }
 
     function changeowner(address _newOwner) public onlyOwner {
@@ -41,9 +41,7 @@ contract MiddleMan {
     }
 
     modifier onlyOwner() {
-        if (msg.sender != owner) {
-            revert Unauthorized();
-        }
+        if (msg.sender != owner) revert Unauthorized();
         _;
     }
 
