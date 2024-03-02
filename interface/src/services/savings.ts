@@ -2,7 +2,7 @@ import factoryAbi from "../abis/factory.json";
 import savingsAbi from "../abis/savings.json";
 import counterAbi from "../abis/counter.json";
 import { ISavingsService } from "../interfaces";
-import { FACTORY_CONTRACT, COUNTER_CONTRACT } from "../data/constants";
+import { factory_contract, counter_contract } from "../data/constants";
 import {
 	readContract,
 	waitForTransaction,
@@ -35,15 +35,17 @@ class SavingsService extends ISavingsService {
 	// ***************************************** Methods ***************************************** //
 	public async getSavingsContract(): Promise<`0x${string}`> {
 		const user = store.getState().wallet.address;
+		const chainId = store.getState().wallet.currentNetwork?.chainId;
+		const factory = factory_contract[chainId as number];
 
 		const savingsContract = (await readContract({
-			address: FACTORY_CONTRACT,
+			address: factory as `0x${string}`,
 			abi: factoryAbi,
 			functionName: "accountLookup",
 			args: [user],
 		})) as `0x${string}`;
 
-		if (savingsContract != zeroAddress) {
+		if (savingsContract && savingsContract != zeroAddress) {
 			return savingsContract;
 		}
 
@@ -60,10 +62,12 @@ class SavingsService extends ISavingsService {
 		setErrorMessage("");
 		setSuccessMessage("");
 		const user = store.getState().wallet.address;
+		const chainId = store.getState().wallet.currentNetwork?.chainId;
+		const factory = factory_contract[chainId as number];
 
 		try {
 			const { hash } = await writeContract({
-				address: FACTORY_CONTRACT,
+				address: factory as `0x${string}`,
 				abi: factoryAbi,
 				functionName: "createAccount",
 				args: [savingsAmount, timelockSecs],
@@ -75,7 +79,7 @@ class SavingsService extends ISavingsService {
 
 			if (txReceipt.status === "success") {
 				const savingsContract = (await readContract({
-					address: FACTORY_CONTRACT,
+					address: factory as `0x${string}`,
 					abi: factoryAbi,
 					functionName: "accountLookup",
 					args: [user],
@@ -153,6 +157,9 @@ class SavingsService extends ISavingsService {
 		setErrorMessage("");
 		setSuccessMessage("");
 
+		const chainId = store.getState().wallet.currentNetwork?.chainId;
+		const counter = counter_contract[chainId as number];
+
 		const callData = encodeFunctionData({
 			abi: counterAbi,
 			functionName: "increment",
@@ -163,7 +170,7 @@ class SavingsService extends ISavingsService {
 				address: savingsContract,
 				abi: savingsAbi,
 				functionName: "entryPoint",
-				args: [COUNTER_CONTRACT, callData],
+				args: [counter as `0x${string}`, callData],
 				value: parseEther("0.0001"),
 			});
 
@@ -197,8 +204,11 @@ class SavingsService extends ISavingsService {
 	}
 
 	public async getCount(): Promise<bigint> {
+		const chainId = store.getState().wallet.currentNetwork?.chainId;
+		const counter = counter_contract[chainId as number];
+
 		const count = (await readContract({
-			address: COUNTER_CONTRACT,
+			address: counter as `0x${string}`,
 			abi: counterAbi,
 			functionName: "number",
 		})) as bigint;

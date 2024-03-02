@@ -7,7 +7,7 @@ import { zeroAddress } from "../resources";
 import { RootState } from "../state/store";
 import { getTokenBaseUnits } from "../utils";
 import SavingsService from "../services/savings";
-import { COUNTER_CONTRACT } from "../data/constants";
+import { counter_contract } from "../data/constants";
 
 export default function Home() {
 	const { isWalletConnected, currentNetwork } = useSelector(
@@ -21,11 +21,27 @@ export default function Home() {
 	const [count, setCount] = useState<bigint>(BigInt(0));
 	const [saveAmount, setSaveAmount] = useState<string>("");
 	const [totalSaved, setTotalSaved] = useState<string>("");
-	const [targetContract, setTargetContract] =
-		useState<string>(COUNTER_CONTRACT);
+	const [targetContract, setTargetContract] = useState<string>(
+		counter_contract[currentNetwork?.chainId as number]
+	);
 	const [savingsContract, setSavingsContract] = useState<string>("");
 	const [successMessage, setSuccessMessage] = useState<string>("");
 	const [errorMessage, setErrorMessage] = useState<string>("");
+
+	const clearState = () => {
+		setAmountInput("");
+		setTimelockDaysInput("");
+		setTimelockSec(BigInt(0));
+		setDaysUntilUnlock("");
+		setAmount(BigInt(0));
+		setCount(BigInt(0));
+		setSaveAmount("");
+		setTotalSaved("");
+		setTargetContract(counter_contract[currentNetwork?.chainId as number]);
+		setSavingsContract("");
+		setSuccessMessage("");
+		setErrorMessage("");
+	};
 
 	const getSavingsContract = async () => {
 		const address = await SavingsService.getInstance().getSavingsContract();
@@ -124,6 +140,7 @@ export default function Home() {
 
 	useEffect(() => {
 		if (isWalletConnected && currentNetwork?.isSupported) {
+			clearState();
 			getSavingsContract();
 		}
 	}, [isWalletConnected, currentNetwork]);
@@ -149,7 +166,9 @@ export default function Home() {
 							Create a smart contract micro-savings account with
 							Auto Hodl.
 						</span>
-						<span>Connect your wallet to start saving!</span>
+						<span className="mt-5">
+							Connect your wallet to start saving!
+						</span>
 					</>
 				) : isWalletConnected && currentNetwork?.isSupported ? (
 					savingsContract ? (
