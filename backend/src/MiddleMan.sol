@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.21;
 
 contract MiddleMan {
     // storage varables
@@ -8,6 +8,7 @@ contract MiddleMan {
     uint256 public timeLockInit;
 
     // errors
+    error FundsLocked();
     error InsuffientValue();
     error Unauthorized();
 
@@ -41,7 +42,10 @@ contract MiddleMan {
     }
 
     function withdraw(uint256 amt) public onlyOwner {
-        require(block.timestamp >= timeLockInit + 365 days, "Funds are locked");
+        if (block.timestamp < timeLockInit + 365 days) {
+            revert FundsLocked();
+        }
+
         payable(owner).transfer(amt);
     }
 

@@ -54,6 +54,19 @@ contract MiddleManTest is Test {
         middleman.entryPoint{value: amount}(address(counter), abi.encodeWithSignature("increment()"));
     }
 
+    /// @dev tests that withdrawl fails if the time lock has not expired
+    // - the contract should revert with the FundsLocked error if the time lock has not expired
+    function testFuzzCannot_EntryPointFundsLocked(uint256 amount) public {
+        // assumptions
+        vm.assume(block.timestamp < middleman.timeLockInit() + 365 days);
+
+        // expectations
+        vm.expectRevert(MiddleMan.FundsLocked.selector);
+
+        // act
+        middleman.withdraw(amount);
+    }
+
     /// @dev tests that state updates on a destination contract
     //  - the value of the counter contract should increase by 1
     function testFuzzIntegration_EntryPointCounterIncrement(uint256 amount) public {
