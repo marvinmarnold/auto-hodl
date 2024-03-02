@@ -1,18 +1,18 @@
 import { SupportedChain } from "../interfaces";
 
 export const chainList: SupportedChain[] = [
-	// // ********** Ethereum ********** //
-	// {
-	// 	name: "Ethereum",
-	// 	imageSource: "/images/iconEthereum.svg",
-	// 	nativeCurrency: {
-	// 		symbol: "ETH",
-	// 		decimals: 18,
-	// 	},
-	// 	blockExplorer: "https://etherscan.io",
-	// 	chainId: 1,
-	// 	isTestnet: false,
-	// },
+	// ********** Ethereum ********** //
+	{
+		name: "Ethereum",
+		imageSource: "/images/iconEthereum.svg",
+		nativeCurrency: {
+			symbol: "ETH",
+			decimals: 18,
+		},
+		blockExplorer: "https://etherscan.io",
+		chainId: 1,
+		isTestnet: false,
+	},
 	// // ********** Optimism ********** //
 	// {
 	// 	name: "Optimism",
@@ -98,29 +98,29 @@ export const chainList: SupportedChain[] = [
 	// 	isTestnet: true,
 	// },
 	// // ********** Arbitrum One ********** //
-	// {
-	// 	name: "Arbitrum One",
-	// 	imageSource: "/images/iconArbitrumOne.svg",
-	// 	nativeCurrency: {
-	// 		symbol: "ETH",
-	// 		decimals: 18,
-	// 	},
-	// 	blockExplorer: "https://arbiscan.io",
-	// 	chainId: 42161,
-	// 	isTestnet: false,
-	// },
-	// // ********** Base ********** //
-	// {
-	// 	name: "Base",
-	// 	imageSource: "/images/iconBase.svg",
-	// 	nativeCurrency: {
-	// 		symbol: "ETH",
-	// 		decimals: 18,
-	// 	},
-	// 	blockExplorer: "https://basescan.org",
-	// 	chainId: 8453,
-	// 	isTestnet: false,
-	// },
+	{
+		name: "Arbitrum One",
+		imageSource: "/images/iconArbitrumOne.svg",
+		nativeCurrency: {
+			symbol: "ETH",
+			decimals: 18,
+		},
+		blockExplorer: "https://arbiscan.io",
+		chainId: 42161,
+		isTestnet: false,
+	},
+	// ********** Base ********** //
+	{
+		name: "Base",
+		imageSource: "/images/iconBase.svg",
+		nativeCurrency: {
+			symbol: "ETH",
+			decimals: 18,
+		},
+		blockExplorer: "https://basescan.org",
+		chainId: 8453,
+		isTestnet: false,
+	},
 	// // ********** Scroll ********** //
 	// {
 	// 	name: "Scroll",

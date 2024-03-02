@@ -17,14 +17,14 @@ import {
 	writeContract,
 } from "@wagmi/core";
 import {
-	// arbitrum,
+	arbitrum,
 	// avalanche,
-	// base,
+	base,
 	// bsc,
 	// celo,
 	// fantom,
 	// gnosis,
-	// mainnet,
+	mainnet,
 	// optimism,
 	// optimismSepolia,
 	// polygon,
@@ -42,16 +42,16 @@ import { rpcUrlMap } from "../data/rpcUrlMap";
 
 const { chains, publicClient } = configureChains(
 	[
-		// arbitrum,
+		arbitrum,
 		// avalanche,
-		// base,
+		base,
 		// optimismSepolia,
 		// bsc,
 		// celo,
 		// fantom,
 		// gnosis,
 		// polygonMumbai,
-		// mainnet,
+		mainnet,
 		// optimism,
 		// polygon,
 		sepolia,
