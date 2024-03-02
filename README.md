@@ -23,6 +23,8 @@ Auto HODL is a consumer DeFi framework for automatically saving a small amount o
 
 ### Diagram
 
+This code currently implements v1 in the diagram below. In the future, we plan on streamlining by integrating with Metamask snaps and 4337 account abstraction.
+
 ![Auto HODL design](auto-hodl-design.jpg)
 
 ## Getting started
