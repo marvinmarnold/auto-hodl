@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.21;
 
-import {Test, console2} from "forge-std/Test.sol";
-import {MiddleMan} from "../src/MiddleMan.sol";
-import {Counter} from "../src/Counter.sol";
+import { Test, console2 } from "forge-std/Test.sol";
+import { MiddleMan } from "../src/MiddleMan.sol";
+import { Counter } from "../src/Counter.sol";
 
 contract MiddleManTest is Test {
     MiddleMan public middleman;
@@ -15,7 +15,7 @@ contract MiddleManTest is Test {
 
         // deploy contracts
         counter = new Counter();
-        middleman = new MiddleMan(owner);
+        middleman = new MiddleMan(owner, 0.0001 ether, 365 days);
     }
 
     /// @dev tests entry point on middle man
@@ -30,7 +30,7 @@ contract MiddleManTest is Test {
         uint256 preTotalSaved = middleman.totalSaved();
 
         // act
-        middleman.entryPoint{value: amount}(address(counter), abi.encodeWithSignature("increment()"));
+        middleman.entryPoint{ value: amount }(address(counter), abi.encodeWithSignature("increment()"));
 
         // post-act data
         uint256 postBalance = address(middleman).balance;
@@ -51,7 +51,7 @@ contract MiddleManTest is Test {
         vm.expectRevert(MiddleMan.InsuffientValue.selector);
 
         // act
-        middleman.entryPoint{value: amount}(address(counter), abi.encodeWithSignature("increment()"));
+        middleman.entryPoint{ value: amount }(address(counter), abi.encodeWithSignature("increment()"));
     }
 
     /// @dev tests that withdrawl fails if the time lock has not expired
@@ -77,7 +77,7 @@ contract MiddleManTest is Test {
         uint256 preCounter = counter.number();
 
         // act
-        middleman.entryPoint{value: amount}(address(counter), abi.encodeWithSignature("increment()"));
+        middleman.entryPoint{ value: amount }(address(counter), abi.encodeWithSignature("increment()"));
 
         // post-act
         uint256 postCounter = counter.number();

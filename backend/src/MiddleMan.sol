@@ -2,20 +2,26 @@
 pragma solidity ^0.8.21;
 
 contract MiddleMan {
+    // immutables: no SLOAD
+    uint256 public immutable timeLockInit;
+    uint256 public immutable timelock;
+
     // storage varables
-    uint256 public totalSaved;
     address public owner;
-    uint256 public timeLockInit;
+    uint256 public totalSaved;
+    uint256 public savingsAmt;
 
     // errors
     error FundsLocked();
     error InsuffientValue();
     error Unauthorized();
 
-    constructor(address _owner) {
+    constructor(address _owner, uint256 _savingsAmt, uint256 _timelock) {
         owner = _owner;
+        savingsAmt = _savingsAmt;
+        timelock = _timelock;
 
-         // Initialize lockTime, for example, at contract deployment
+        // initialize timplock
         timeLockInit = block.timestamp;
     }
 
@@ -26,7 +32,7 @@ contract MiddleMan {
         returns (bool success, bytes memory returnData)
     {
         // ensure value was senta
-        if (msg.value < 0.0001 ether) {
+        if (msg.value < savingsAmt) {
             revert InsuffientValue();
         }
 
@@ -42,11 +48,15 @@ contract MiddleMan {
     }
 
     function withdraw(uint256 amt) public onlyOwner {
-        if (block.timestamp < timeLockInit + 365 days) {
+        if (block.timestamp < timeLockInit + timelock) {
             revert FundsLocked();
         }
 
         payable(owner).transfer(amt);
+    }
+
+    function changeSavingsAmt(uint256 _savingsAmt) public onlyOwner {
+        savingsAmt = _savingsAmt;
     }
 
     modifier onlyOwner() {

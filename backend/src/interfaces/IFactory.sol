@@ -6,5 +6,5 @@ interface IFactory {
     function accountLookup(address) external view returns (address);
 
     // write functions
-    function createAccount() external payable returns (address);
+    function createAccount(uint256 _savingsAmt, uint256 _timelock) external payable returns (address);
 }
