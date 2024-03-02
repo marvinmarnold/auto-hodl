@@ -45,7 +45,7 @@ class SavingsService extends ISavingsService {
 			args: [user],
 		})) as `0x${string}`;
 
-		if (savingsContract != zeroAddress) {
+		if (savingsContract && savingsContract != zeroAddress) {
 			return savingsContract;
 		}
 
