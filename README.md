@@ -64,8 +64,8 @@ $ yarn dev
 |Fhenix|Testnet|[0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4](https://explorer.testnet.fhenix.zone/address/0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4)|
 |Arbitrum|Testnet|[0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4](https://sepolia.arbiscan.io/address/0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4)|
 |Linea|Mainnet|[0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4](https://lineascan.build/address/0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4)|
-|XDC|Testnet||
-|Injective|Testnet||
+|XDC|Testnet|[xdcf6c8eed3be03a482fe5d43c4efc330d14db7cfa4](https://apothem.blocksscan.io/address/xdcf6c8eed3be03a482fe5d43c4efc330d14db7cfa4#transactions)|
+|Injective|Testnet|[0xa52b8D81C2A8673C704a35557E6a8B8791fC3506](https://testnet.explorer.injective.network/account/inj1554cmqwz4pnncuz2x42hu65ts7glcdgxycyy7m/)|
 
 
 ## Deployed Target Contracts
@@ -77,5 +77,5 @@ $ yarn dev
 |Fhenix|Testnet|[0x94789011AcF3c7411d1db9Abe8337f4BA7589D9f](https://explorer.testnet.fhenix.zone/address/0x94789011AcF3c7411d1db9Abe8337f4BA7589D9f)|
 |Arbitrum|Testnet|[0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20](https://sepolia.arbiscan.io/address/0xf312f04df2885ec7c44cde77bac8bb8b1fb4aa20)|
 |Linea|Mainnet|[0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20](https://lineascan.build/address/0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20)|
-|XDC|Testnet||
-|Injective|Testnet||
+|XDC|Testnet|[0x94789011AcF3c7411d1db9Abe8337f4BA7589D9f](https://apothem.blocksscan.io/address/xdc94789011acf3c7411d1db9abe8337f4ba7589d9f#transactions)|
+|Injective|Testnet|[0x144E52b74F837F5529b0c41e900BB5c61d30afb4](https://testnet.explorer.injective.network/account/inj1z3899d60sdl422dscs0fqza4ccwnpta5xw4pcc/)|
