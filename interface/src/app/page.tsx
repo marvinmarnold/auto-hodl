@@ -1,24 +1,22 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { PiCheckSquareOffset, PiCopy } from "react-icons/pi";
 import { useSelector } from "react-redux";
 
-import { chainList } from "../data/chains";
-import { SupportedChain } from "../interfaces";
-import { getChain, zeroAddress } from "../resources";
+import { zeroAddress } from "../resources";
 import { RootState } from "../state/store";
 import { getTokenBaseUnits } from "../utils";
 import SavingsService from "../services/savings";
 import { COUNTER_CONTRACT } from "../data/constants";
 
 export default function Home() {
-	const { isWalletConnected, currentNetwork, nativeBalance } = useSelector(
+	const { isWalletConnected, currentNetwork } = useSelector(
 		(state: RootState) => state.wallet
 	);
 	const [amountInput, setAmountInput] = useState<string>("");
 	const [timelockDaysInput, setTimelockDaysInput] = useState<string>("");
 	const [timelockSec, setTimelockSec] = useState<bigint>(BigInt(0));
+	const [daysUntilUnlock, setDaysUntilUnlock] = useState<string>("");
 	const [amount, setAmount] = useState<bigint>(BigInt(0));
 	const [count, setCount] = useState<bigint>(BigInt(0));
 	const [saveAmount, setSaveAmount] = useState<string>("");
@@ -60,6 +58,13 @@ export default function Home() {
 		);
 	};
 
+	const getTimeLock = async () => {
+		await SavingsService.getInstance().getTimeLock(
+			savingsContract as `0x${string}`,
+			setDaysUntilUnlock
+		);
+	};
+
 	const getCount = async () => {
 		const currentCount = await SavingsService.getInstance().getCount();
 		setCount(currentCount);
@@ -77,6 +82,7 @@ export default function Home() {
 	const handleAmountChange = (event: React.FormEvent<HTMLInputElement>) => {
 		const target = event.target as HTMLInputElement;
 		let amountString = target.validity.valid ? target.value : amountInput;
+		const tokenDecimals = 18;
 
 		if (amountString === "") {
 			setAmount(BigInt(0));
@@ -85,7 +91,6 @@ export default function Home() {
 				amountString = `0${amountString}`;
 			}
 
-			const tokenDecimals = 18;
 			const components = amountString.split(".");
 			const decimals = components[1];
 
@@ -96,6 +101,7 @@ export default function Home() {
 				setAmount(getTokenBaseUnits(amountString, tokenDecimals));
 			}
 		}
+
 		setAmountInput(amountString);
 	};
 
@@ -106,18 +112,7 @@ export default function Home() {
 			: timelockDaysInput;
 
 		if (timelockDaysString === "") {
-			setAmount(BigInt(0));
-		} else if (timelockDaysString !== ".") {
-			const tokenDecimals = 18;
-			const components = timelockDaysString.split(".");
-			const decimals = components[1];
-
-			if (decimals && decimals.length > tokenDecimals) {
-				setErrorMessage("Too many decimal places.");
-			} else {
-				setErrorMessage("");
-				setAmount(getTokenBaseUnits(timelockDaysString, tokenDecimals));
-			}
+			setTimelockSec(BigInt(0));
 		}
 
 		const timelockDays = BigInt(timelockDaysString);
@@ -137,9 +132,10 @@ export default function Home() {
 		if (savingsContract) {
 			getSaveAmount();
 			getTotalSaved();
+			getTimeLock();
 			getCount();
 		}
-	}, [savingsContract]);
+	}, [savingsContract, count]);
 
 	return (
 		<div className="flex w-full flex-1 flex-col items-center justify-start py-10">
@@ -158,21 +154,33 @@ export default function Home() {
 				) : isWalletConnected && currentNetwork?.isSupported ? (
 					savingsContract ? (
 						<>
-							<span>
-								Savings Contract Address: {savingsContract}
+							<span className="mt-8 text-lg font-bold text-primary-100">
+								Savings Contract Address
 							</span>
-							<span>
-								Savings Amount Per Transaction: {saveAmount} ETH
+							<span className="mb-2">{savingsContract}</span>
+							<span className="mt-8 text-lg font-bold text-primary-100">
+								Savings Amount Per Transaction
 							</span>
-							<span>Total Saved: {totalSaved} ETH</span>
-							<span>Count: {count.toString()}</span>
+							<span className="mb-2">{saveAmount} ETH</span>
+							<span className="mt-8 text-lg font-bold text-primary-100">
+								Total Saved
+							</span>
+							<span className="mb-2">{totalSaved} ETH</span>
+							<span className="mt-8 text-lg font-bold text-primary-100">
+								Days Until Unlock
+							</span>
+							<span className="mb-2">{daysUntilUnlock}</span>
+							<span className="mt-8 text-lg font-bold text-primary-100">
+								Count
+							</span>
+							<span className="mb-2">{count.toString()}</span>
 							<button
 								style={
 									{
 										"--offset-border-color": "#395754", // dark-200
 									} as React.CSSProperties
 								}
-								className="mt-3 *:offset-border flex h-10 w-20 shrink-0 items-center justify-center bg-dark-500 px-2 outline-none hover:bg-dark-400 hover:text-primary-100"
+								className="mt-3 *:offset-border flex h-10 w-24 shrink-0 items-center justify-center bg-dark-500 px-2 outline-none hover:bg-dark-400 hover:text-primary-100 mb-4"
 								onClick={() => incrementCount()}
 							>
 								+ Count
@@ -257,84 +265,3 @@ export default function Home() {
 		</div>
 	);
 }
-
-/**
- * {isWalletConnected &&
-				currentNetwork?.isSupported &&
-				savingsContract ? (
-					<>
-						<span>Savings Contract Address: {savingsContract}</span>
-						<span>
-							Savings Amount Per Transaction: {saveAmount} ETH
-						</span>
-						<span>Total Saved: {totalSaved} ETH</span>
-						<span>Count: {count.toString()}</span>
-						<button
-							style={
-								{
-									"--offset-border-color": "#395754", // dark-200
-								} as React.CSSProperties
-							}
-							className="mt-3 *:offset-border flex h-10 w-20 shrink-0 items-center justify-center bg-dark-500 px-2 outline-none hover:bg-dark-400 hover:text-primary-100"
-							onClick={() => incrementCount()}
-						>
-							+ Count
-						</button>
-					</>
-				) : (
-					<>
-						<span className="mt-3 self-start">
-							Savings Amount Per Transaction
-						</span>
-						<input
-							className="h-10 w-full bg-dark-500 p-2 outline-none ring-1 ring-dark-200 focus:ring-dark-100"
-							type="text"
-							pattern="[0-9]*\.?[0-9]*"
-							inputMode="decimal"
-							placeholder="0.00"
-							onWheel={(event) =>
-								(event.target as HTMLInputElement).blur()
-							}
-							autoComplete="off"
-							value={amountInput}
-							onInput={(event) => handleAmountChange(event)}
-						/>
-						<span className="mt-3 self-start">Timelock (Days)</span>
-						<input
-							className="h-10 w-full bg-dark-500 p-2 outline-none ring-1 ring-dark-200 focus:ring-dark-100"
-							type="text"
-							pattern="[0-9]*"
-							inputMode="numeric"
-							placeholder="0"
-							onWheel={(event) =>
-								(event.target as HTMLInputElement).blur()
-							}
-							autoComplete="off"
-							value={timelockDaysInput}
-							onInput={(event) => handleTimelockChange(event)}
-						/>
-						<span className="mt-3 self-start">Target Contract</span>
-						<input
-							className="h-10 w-full bg-dark-500 p-2 outline-none ring-1 ring-dark-200 focus:ring-dark-100"
-							type="text"
-							placeholder="0x..."
-							value={targetContract}
-							onChange={(event) =>
-								setTargetContract(event.target.value)
-							}
-							autoComplete="off"
-						/>
-						<button
-							style={
-								{
-									"--offset-border-color": "#395754", // dark-200
-								} as React.CSSProperties
-							}
-							className="mt-3 *:offset-border flex h-10 w-20 shrink-0 items-center justify-center bg-dark-500 px-2 outline-none hover:bg-dark-400 hover:text-primary-100"
-							onClick={() => deploySavingsContract()}
-						>
-							Deploy
-						</button>
-					</>
-				)}
- */
