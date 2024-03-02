@@ -42,13 +42,13 @@ export const chainList: SupportedChain[] = [
 	{
 		name: "XDC",
 		imageSource: "/images/iconXdc.png",
-		blockExplorer: "https://xdc.blocksscan.io",
+		blockExplorer: "https://explorer.apothem.network",
 		nativeCurrency: {
 			symbol: "XDC",
 			decimals: 18,
 		},
-		chainId: 50,
-		isTestnet: false,
+		chainId: 51,
+		isTestnet: true,
 	},
 	// ********** Injective ********** //
 	{
