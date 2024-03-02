@@ -32,7 +32,7 @@ contract MiddleMan {
         (success, returnData) = _target.call(_calldata);
     }
 
-    function changeowner(address _newOwner) public onlyOwner {
+    function changeOwner(address _newOwner) public onlyOwner {
         owner = _newOwner;
     }
 
