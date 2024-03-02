@@ -2,7 +2,7 @@
 
 Auto HODL is a consumer DeFi framework for automatically saving a small amount of tokens as users perform their normal on-chain activity. In other words, Auto HODL is an on-chain equivalent of [Acorns](https://www.acorns.com/) and other round-up savings tools.
 
-[ETH Denver 2024 presentation]()
+[ETH Denver 2024 presentation](https://docs.google.com/presentation/d/1a946eixqBip8SjOVe2Uf69EXOgODFZ3A_THlTs5XUBc/edit?usp=sharing)
 
 ## Architecture
 
@@ -55,6 +55,15 @@ $ yarn dev
 ```
 
 
-## Deployed addresses
+## Deployed Savings Contracts
 
 |Network|Environment|Address|
+|-------|-----------|-------|
+|Base|Mainnet|0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20|
+
+
+## Deployed Target Contracts
+
+|Network|Environment|Address|
+|-------|-----------|-------|
+|Base|Mainnet|0x94789011AcF3c7411d1db9Abe8337f4BA7589D9f|
