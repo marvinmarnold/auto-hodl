@@ -16,7 +16,7 @@ export const factory_contract: Record<number, string> = {
 	// Inco Test
 	9090: "0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4",
 	// inEVM Test
-	2424: "0xa52b8D81C2A8673C704a35557E6a8B8791fC3506",
+	1738: "0xa52b8D81C2A8673C704a35557E6a8B8791fC3506",
 	// Fhenix Frontier
 	42069: "0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4",
 };
@@ -35,7 +35,7 @@ export const counter_contract: Record<number, string> = {
 	// Inco Test
 	9090: "0xf312F04DF2885Ec7C44cde77bAC8BB8B1FB4Aa20",
 	// inEVM Test
-	2424: "0x144E52b74F837F5529b0c41e900BB5c61d30afb4",
+	1738: "0x144E52b74F837F5529b0c41e900BB5c61d30afb4",
 	// Fhenix Frontier
 	42069: "x94789011AcF3c7411d1db9Abe8337f4BA7589D9f",
 };

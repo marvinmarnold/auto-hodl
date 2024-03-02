@@ -55,9 +55,9 @@ const incoTest = {
 } as const satisfies Chain;
 
 const inEvmTest = {
-	id: 2424,
+	id: 1738,
 	name: "inEvm Testnet",
-	network: "incoTest",
+	network: "inEvmTest",
 	nativeCurrency: { name: "INJ", symbol: "INJ", decimals: 18 },
 	rpcUrls: {
 		public: { http: ["https://testnet.rpc.inevm.com/http"] },

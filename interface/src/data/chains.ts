@@ -59,7 +59,7 @@ export const chainList: SupportedChain[] = [
 			symbol: "INJ",
 			decimals: 18,
 		},
-		chainId: 2424,
+		chainId: 1738,
 		isTestnet: true,
 	},
 	// ********** Inco ********** //
