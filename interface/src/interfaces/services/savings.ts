@@ -20,8 +20,13 @@ export abstract class ISavingsService {
 	): Promise<void>;
 
 	abstract entryPoint(
-		setErrorMessage: (value: string) => void
+		savingsContract: `0x${string}`,
+		setErrorMessage: (value: string) => void,
+		setSuccessMessage: (value: string) => void,
+		setCount: (value: bigint) => void
 	): Promise<void>;
+
+	abstract getCount(): Promise<bigint>;
 
 	abstract withdraw(setErrorMessage: (value: string) => void): Promise<void>;
 

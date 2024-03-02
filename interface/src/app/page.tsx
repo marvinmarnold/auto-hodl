@@ -19,6 +19,7 @@ export default function Home() {
 	const [timelockDaysInput, setTimelockDaysInput] = useState<string>("");
 	const [timelockSec, setTimelockSec] = useState<bigint>(BigInt(0));
 	const [amount, setAmount] = useState<bigint>(BigInt(0));
+	const [count, setCount] = useState<bigint>(BigInt(0));
 	const [saveAmount, setSaveAmount] = useState<string>("");
 	const [totalSaved, setTotalSaved] = useState<string>("");
 	const [targetContract, setTargetContract] = useState<string>("");
@@ -27,7 +28,6 @@ export default function Home() {
 	const [errorMessage, setErrorMessage] = useState<string>("");
 
 	const getSavingsContract = async () => {
-		console.log("getSavingsContract called");
 		const address = await SavingsService.getInstance().getSavingsContract();
 		if (address !== zeroAddress) {
 			setSavingsContract(address);
@@ -55,6 +55,20 @@ export default function Home() {
 		await SavingsService.getInstance().getTotalSaved(
 			savingsContract as `0x${string}`,
 			setTotalSaved
+		);
+	};
+
+	const getCount = async () => {
+		const currentCount = await SavingsService.getInstance().getCount();
+		setCount(currentCount);
+	};
+
+	const incrementCount = async () => {
+		await SavingsService.getInstance().entryPoint(
+			savingsContract as `0x${string}`,
+			setErrorMessage,
+			setSuccessMessage,
+			setCount
 		);
 	};
 
@@ -121,6 +135,7 @@ export default function Home() {
 		if (savingsContract) {
 			getSaveAmount();
 			getTotalSaved();
+			getCount();
 		}
 	}, [savingsContract]);
 
@@ -135,8 +150,22 @@ export default function Home() {
 				savingsContract ? (
 					<>
 						<span>Savings Contract Address: {savingsContract}</span>
-						<span>Savings Amount: {saveAmount}</span>
-						<span>Total Saved: {totalSaved}</span>
+						<span>
+							Savings Amount Per Transaction: {saveAmount} ETH
+						</span>
+						<span>Total Saved: {totalSaved} ETH</span>
+						<span>Count: {count.toString()}</span>
+						<button
+							style={
+								{
+									"--offset-border-color": "#395754", // dark-200
+								} as React.CSSProperties
+							}
+							className="mt-3 *:offset-border flex h-10 w-20 shrink-0 items-center justify-center bg-dark-500 px-2 outline-none hover:bg-dark-400 hover:text-primary-100"
+							onClick={() => incrementCount()}
+						>
+							+ Count
+						</button>
 					</>
 				) : (
 					<>
@@ -193,6 +222,13 @@ export default function Home() {
 							Deploy
 						</button>
 					</>
+				)}
+				{successMessage && (
+					<div className="mt-2 flex w-full items-center justify-center text-sm">
+						<span className="break-all text-good-accent">
+							{successMessage}
+						</span>
+					</div>
 				)}
 				{errorMessage && (
 					<div className="mt-2 flex w-full items-center justify-center text-sm">

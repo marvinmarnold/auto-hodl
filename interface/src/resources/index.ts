@@ -9,6 +9,7 @@ export {
 	parseUnits,
 	zeroAddress,
 	encodeFunctionData,
+	parseEther,
 } from "./blockchainInterface";
 export { getChain } from "./getChain";
 export {

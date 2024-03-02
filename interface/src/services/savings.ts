@@ -9,6 +9,7 @@ import {
 	writeContract,
 	zeroAddress,
 	encodeFunctionData,
+	parseEther,
 } from "../resources";
 import store from "../state/store";
 import { getTokenDisplayUnits } from "../utils";
@@ -56,6 +57,8 @@ class SavingsService extends ISavingsService {
 		setSuccessMessage: (value: string) => void,
 		setSavingsContract: (value: string) => void
 	): Promise<void> {
+		setErrorMessage("");
+		setSuccessMessage("");
 		const user = store.getState().wallet.address;
 
 		try {
@@ -83,7 +86,7 @@ class SavingsService extends ISavingsService {
 				setErrorMessage("Something went wrong trying to deploy.");
 			}
 		} catch (error: any) {
-			setErrorMessage(error);
+			setErrorMessage(error.message);
 		}
 	}
 
@@ -110,14 +113,59 @@ class SavingsService extends ISavingsService {
 			functionName: "totalSaved",
 		})) as bigint;
 
+		console.log("totalSaved: ", totalSaved);
+
 		setTotalSaved(getTokenDisplayUnits(totalSaved, 18));
 	}
 
 	public async entryPoint(
 		savingsContract: `0x${string}`,
-		setErrorMessage: (value: string) => void
+		setErrorMessage: (value: string) => void,
+		setSuccessMessage: (value: string) => void,
+		setCount: (value: bigint) => void
 	): Promise<void> {
-		// stuff
+		setErrorMessage("");
+		setSuccessMessage("");
+
+		const callData = encodeFunctionData({
+			abi: counterAbi,
+			functionName: "increment",
+		});
+
+		try {
+			const { hash } = await writeContract({
+				address: savingsContract,
+				abi: savingsAbi,
+				functionName: "entryPoint",
+				args: [COUNTER_CONTRACT, callData],
+				value: parseEther("0.0001"),
+			});
+
+			const txReceipt = await waitForTransaction({
+				hash,
+			});
+
+			if (txReceipt.status === "success") {
+				setCount(await this.getCount());
+				setSuccessMessage(
+					"Successfully incremented count and saved some money!"
+				);
+			} else {
+				setErrorMessage("Something went wrong trying to deploy.");
+			}
+		} catch (error: any) {
+			setErrorMessage(error.message);
+		}
+	}
+
+	public async getCount(): Promise<bigint> {
+		const count = (await readContract({
+			address: COUNTER_CONTRACT,
+			abi: counterAbi,
+			functionName: "number",
+		})) as bigint;
+
+		return count;
 	}
 
 	public async withdraw(

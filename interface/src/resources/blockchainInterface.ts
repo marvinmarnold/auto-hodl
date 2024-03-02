@@ -9,4 +9,5 @@ export {
 	parseUnits,
 	zeroAddress,
 	encodeFunctionData,
+	parseEther,
 } from "viem";
