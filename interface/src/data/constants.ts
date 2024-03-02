@@ -12,7 +12,7 @@ export const factory_contract: Record<number, string> = {
 	// Linea
 	59144: "0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4",
 	// XDC
-	50: "xdcf6c8eed3be03a482fe5d43c4efc330d14db7cfa4",
+	50: "0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4",
 	// Inco Test
 	9090: "0xF6c8EED3bE03a482Fe5d43c4EFC330d14dB7cfA4",
 	// inEVM Test
