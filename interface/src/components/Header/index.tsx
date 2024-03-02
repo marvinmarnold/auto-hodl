@@ -59,13 +59,16 @@ function Header() {
 	return (
 		<header className="sticky top-0 z-10 flex w-full items-center justify-center px-4 py-2 backdrop-blur-sm">
 			<div className="flex w-full max-w-4xl items-center justify-between">
-				{/* <Link
+				<Link
 					className="relative flex w-14 justify-center outline-none"
 					href="/"
 				>
-					<img src="/images/iconAutoHodl.svg" alt="auto-hodl-icon" />
-				</Link> */}
-				<span>Logo</span>
+					<img
+						className="rounded-full"
+						src="/images/iconAutoHodl.jpeg"
+						alt="auto-hodl-icon"
+					/>
+				</Link>
 				{isWalletConnected ? (
 					<div className="flex items-center justify-center">
 						<NetworkDropdown

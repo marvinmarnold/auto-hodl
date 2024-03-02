@@ -19,6 +19,11 @@ export abstract class ISavingsService {
 		setTotalSaved: (value: string) => void
 	): Promise<void>;
 
+	abstract getTimeLock(
+		savingsContract: `0x${string}`,
+		setDaysUntilUnlock: (value: string) => void
+	): Promise<void>;
+
 	abstract entryPoint(
 		savingsContract: `0x${string}`,
 		setErrorMessage: (value: string) => void,

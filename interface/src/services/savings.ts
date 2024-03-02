@@ -86,7 +86,19 @@ class SavingsService extends ISavingsService {
 				setErrorMessage("Something went wrong trying to deploy.");
 			}
 		} catch (error: any) {
-			setErrorMessage(error.message);
+			const acceptableErrorMessages = [
+				"rejected",
+				"request reset",
+				"denied",
+			];
+
+			if (
+				!acceptableErrorMessages.some((msg) =>
+					error.message.includes(msg)
+				)
+			) {
+				setErrorMessage(error.message);
+			}
 		}
 	}
 
@@ -113,9 +125,23 @@ class SavingsService extends ISavingsService {
 			functionName: "totalSaved",
 		})) as bigint;
 
-		console.log("totalSaved: ", totalSaved);
-
 		setTotalSaved(getTokenDisplayUnits(totalSaved, 18));
+	}
+
+	public async getTimeLock(
+		savingsContract: `0x${string}`,
+		setDaysUntilUnlock: (value: string) => void
+	): Promise<void> {
+		const timeLockSecs = (await readContract({
+			address: savingsContract,
+			abi: savingsAbi,
+			functionName: "timelock",
+		})) as bigint;
+
+		const timelockDays =
+			(timeLockSecs + BigInt(86400) - BigInt(1)) / BigInt(86400);
+
+		setDaysUntilUnlock(timelockDays.toString());
 	}
 
 	public async entryPoint(
@@ -154,7 +180,19 @@ class SavingsService extends ISavingsService {
 				setErrorMessage("Something went wrong trying to deploy.");
 			}
 		} catch (error: any) {
-			setErrorMessage(error.message);
+			const acceptableErrorMessages = [
+				"rejected",
+				"request reset",
+				"denied",
+			];
+
+			if (
+				!acceptableErrorMessages.some((msg) =>
+					error.message.includes(msg)
+				)
+			) {
+				setErrorMessage(error.message);
+			}
 		}
 	}
 
